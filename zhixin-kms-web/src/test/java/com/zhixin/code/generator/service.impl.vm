@@ -1,0 +1,19 @@
+package com.zhixin.service.${moduleName}.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.zhixin.dao.${moduleName}.I${classname}Dao;
+import com.zhixin.dto.${moduleName}.${classname}DTO;
+import com.zhixin.entities.${moduleName}.${classname}Entity; 
+import com.zhixin.service.${moduleName}.I${classname}Service; 
+import com.zhixin.service.base.impl.AbstractBaseService;
+ 
+@Service("${classname}ServiceImpl")
+public class ${classname}ServiceImpl extends 	AbstractBaseService<${classname}DTO,${classname}Entity, Long> implements I${classname}Service {
+
+	@ Autowired
+	public ${classname}ServiceImpl(I${classname}Dao ${newclassname}Dao ) {
+		super(${newclassname}Dao);
+	}
+}

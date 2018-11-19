@@ -1,0 +1,89 @@
+<FindBugsFilter>
+    <!-- High Priority Bugs -->
+    <Match><Class name="~.*\.*" /><Bug pattern="ODR_OPEN_DATABASE_RESOURCE"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="ODR_OPEN_DATABASE_RESOURCE_EXCEPTION_PATH"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="OS_OPEN_STREAM"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="OS_OPEN_STREAM_EXCEPTION_PATH"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="SE_NONFINAL_SERIALVERSIONID"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="SE_NONLONG_SERIALVERSIONID"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="SE_NONSTATIC_SERIALVERSIONID"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="RC_REF_COMPARISON"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="NP_NULL_INSTANCEOF"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="SA_FIELD_DOUBLE_ASSIGNMENT"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="EQ_ALWAYS_FALSE"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="EQ_ALWAYS_TRUE"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="RE_CANT_USE_FILE_SEPARATOR_AS_REGULAR_EXPRESSION"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="VA_FORMAT_STRING_MISSING_ARGUMENT"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="BC_IMPOSSIBLE_CAST"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="EC_BAD_ARRAY_COMPARE"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="NP_GUARANTEED_DEREF"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="SA_FIELD_SELF_ASSIGNMENT"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="SA_FIELD_SELF_COMPARISON"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="SA_LOCAL_DOUBLE_ASSIGNMENT"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="NS_DANGEROUS_NON_SHORT_CIRCUIT"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="RU_INVOKE_RUN"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="SWL_SLEEP_WITH_LOCK_HELD"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="UL_UNRELEASED_LOCK_EXCEPTION_PATH"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="UL_UNRELEASED_LOCK"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="STCAL_STATIC_CALENDAR_INSTANCE"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="STCAL_STATIC_SIMPLE_DATE_FORMAT_INSTANCE"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="WL_USING_GETCLASS_RATHER_THAN_CLASS_LITERAL"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="DL_SYNCHRONIZATION_ON_BOOLEAN"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="DL_SYNCHRONIZATION_ON_BOOLEAN"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="DL_SYNCHRONIZATION_ON_BOXED_PRIMITIVE"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="DL_SYNCHRONIZATION_ON_UNSHARED_BOXED_PRIMITIVE"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="ML_SYNC_ON_FIELD_TO_GUARD_CHANGING_THAT_FIELD"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="DMI_BLOCKING_METHODS_ON_URL"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="DMI_EMPTY_DB_PASSWORD"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="DMI_CONSTANT_DB_PASSWORD"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="HRS_REQUEST_PARAMETER_TO_COOKIE"/></Match>
+
+     <!-- Normal Priority Bugs -->
+    <!--
+    <Match><Class name="~.*\.*" /><Bug pattern="CO_ABSTRACT_SELF"/><Priority value="3"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="EQ_ABSTRACT_SELF"/><Priority value="3"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="EQ_COMPARETO_USE_OBJECT_EQUALS"/><Priority value="3"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="HE_EQUALS_USE_HASHCODE"/><Priority value="3"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="HE_EQUALS_NO_HASHCODE"/><Priority value="3"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="HE_HASHCODE_USE_OBJECT_EQUALS"/><Priority value="3"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="HE_HASHCODE_NO_EQUALS"/><Priority value="3"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="HE_INHERITS_EQUALS_USE_HASHCODE"/><Priority value="3"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="SE_NO_SUITABLE_CONSTRUCTOR_FOR_EXTERNALIZATION"/><Priority value="3"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="SE_NO_SUITABLE_CONSTRUCTOR"/><Priority value="3"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="SE_NO_SERIALVERSIONID"/><Priority value="3"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="ES_COMPARING_STRINGS_WITH_EQ"/><Priority value="3"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="ES_COMPARING_PARAMETER_STRING_WITH_EQ"/><Priority value="3"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="CO_SELF_NO_OBJECT"/><Priority value="3"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="EQ_SELF_NO_OBJECT"/><Priority value="3"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="BC_EQUALS_METHOD_SHOULD_WORK_FOR_ALL_OBJECTS"/><Priority value="3"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="NP_EQUALS_SHOULD_HANDLE_NULL_ARGUMENT"/><Priority value="3"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="DM_RUN_FINALIZERS_ON_EXIT"/><Priority value="3"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="DM_EXIT"/><Priority value="3"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="SE_BAD_FIELD_INNER_CLASS"/><Priority value="3"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="SE_BAD_FIELD_STORE"/><Priority value="3"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="NP_TOSTRING_COULD_RETURN_NULL"/><Priority value="3"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="EQ_DONT_DEFINE_EQUALS_FOR_ENUM"/><Priority value="3"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="EQ_SELF_USE_OBJECT"/><Priority value="3"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="EQ_COMPARING_CLASS_NAMES"/><Priority value="3"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="EQ_OTHER_NO_OBJECT"/><Priority value="3"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="EQ_OTHER_USE_OBJECT"/><Priority value="3"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="VA_FORMAT_STRING_BAD_ARGUMENT"/><Priority value="3"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="RpC_REPEATED_CONDITIONAL_TEST"/><Priority value="3"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="HE_USE_OF_UNHASHABLE_CLASS"/><Priority value="3"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="DMI_UNSUPPORTED_METHOD"/><Priority value="3"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="IM_BAD_CHECK_FOR_ODD"/><Priority value="3"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="DMI_HARDCODED_ABSOLUTE_FILENAME"/><Priority value="3"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="DM_CONVERT_CASE"/><Priority value="3"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="IS_FIELD_NOT_GUARDED"/><Priority value="3"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="SIC_INNER_SHOULD_BE_STATIC_ANON"/><Priority value="3"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="DM_GC"/><Priority value="3"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="HSC_HUGE_SHARED_STRING_CONSTANT"/><Priority value="3"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="DMI_COLLECTION_OF_URLS"/><Priority value="3"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="DM_BOXED_PRIMITIVE_TOSTRING"/><Priority value="3"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="SBSC_USE_STRINGBUFFER_CONCATENATION"/><Priority value="3"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="DM_BOOLEAN_CTOR"/><Priority value="3"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="DM_STRING_VOID_CTOR"/><Priority value="3"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="DM_NUMBER_CTOR"/><Priority value="3"/></Match>
+    <Match><Class name="~.*\.*" /><Bug pattern="UPM_UNCALLED_PRIVATE_METHOD"/><Priority value="3"/></Match>
+    -->
+</FindBugsFilter>

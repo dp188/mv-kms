@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC
+          "-//Puppy Crawl//DTD Check Configuration 1.3//EN"
+          "http://www.puppycrawl.com/dtds/configuration_1_3.dtd">
+<module name="Checker">
+	<module name="TreeWalker">
+		<module name="FileContentsHolder" />
+		<module name="UnusedImports">
+			<property name="severity" value="info" />
+		</module>
+		<module name="AnonInnerLength">
+			<property name="severity" value="info" />
+		</module>
+		<module name="CyclomaticComplexity">
+			<property name="severity" value="info" />
+			<property name="max" value="7" />
+		</module>
+
+		<!-- Checks for common coding problems -->
+		<module name="DefaultComesLast">
+			<property name="severity" value="info" />
+		</module>
+		<module name="EqualsHashCode">
+			<property name="severity" value="info" />
+		</module>
+		<module name="HiddenField">
+			<property name="severity" value="info" />
+			<property name="ignoreConstructorParameter" value="true" />
+			<property name="ignoreSetter" value="true" />
+		</module>
+		<module name="InnerAssignment">
+			<property name="severity" value="info" />
+		</module>
+		<module name="SimplifyBooleanExpression">
+			<property name="severity" value="info" />
+		</module>
+		<module name="SimplifyBooleanReturn">
+			<property name="severity" value="info" />
+		</module>
+		<module name="StringLiteralEquality">
+			<property name="severity" value="info" />
+		</module>
+
+		<!-- Checks for class design -->
+		<module name="HideUtilityClassConstructor">
+			<property name="severity" value="info" />
+		</module>
+		<module name="VisibilityModifier">
+			<property name="severity" value="info" />
+		</module>
+	</module>
+</module>

@@ -1,0 +1,28 @@
+package com.zhixin.dao.${moduleName}.impl;
+
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.stereotype.Repository;
+
+import com.zhixin.dao.base.impl.AbstractBaseDao;
+import com.zhixin.dao.${moduleName}.I${classname}Dao;
+import com.zhixin.entities.${moduleName}.${classname}Entity;
+
+@CacheConfig(cacheNames = "${classname}DaoImpl", cacheResolver="PlatformCacheResolver", cacheManager="cacheManager")
+@Repository
+public class ${classname}DaoImpl extends AbstractBaseDao<${classname}Entity, Long> implements I${classname}Dao {
+     
+	@Qualifier("sqlSession")
+	@Autowired
+	private SqlSessionTemplate sqlSession = null;
+	
+    public ${classname}DaoImpl() {
+		super(${classname}DaoImpl.class.getName());
+    }
+	public  SqlSessionTemplate getSqlSession(){
+		return sqlSession;
+	}
+ 
+}

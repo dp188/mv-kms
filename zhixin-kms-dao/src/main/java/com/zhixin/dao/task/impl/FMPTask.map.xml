@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhixin.dao.task.impl.FMPTaskDaoImpl">
+	<resultMap id="t_fmp_task_map" type="com.zhixin.entities.task.FMPTaskEntity">
+		<result property="id" column="id" />
+		<result property="taskName" column="task_name" />
+		<result property="filePath" column="file_path" />
+		<result property="taskStartDate" column="task_start_date" />
+		<result property="taskStatus" column="task_status" />
+		<result property="createdTime" column="created_time" />
+		<result property="count" column="count" />
+		<result property="updatedTime" column="updated_time" />
+		<result property="status" column="status" />
+	</resultMap>
+	<insert id="create" parameterType="com.zhixin.entities.task.FMPTaskEntity">
+		insert into t_fmp_task (
+		id
+		,`task_name`
+		,`file_path`
+		,`task_start_date`
+		,`task_status`
+		,`count`
+		,`status`
+		) values (
+		#{id}
+		, #{taskName}
+		, #{filePath}
+		, #{taskStartDate}
+		,
+		#{taskStatus}
+		, #{count}
+		, #{status}
+		)
+	</insert>
+	<update id="update" parameterType="com.zhixin.entities.task.FMPTaskEntity">
+		update t_fmp_task
+		<set> 
+			`task_start_date` = CURRENT_TIMESTAMP(),
+			 updated_time = CURRENT_TIMESTAMP(),
+			`task_status` =#{taskStatus},
+			`count` =#{count},
+		</set>
+		where
+		`id` = #{id}
+
+	</update>
+	<delete id="remove" parameterType="Long">
+		update t_fmp_task set
+		status= 0
+		where
+		`id` = #{id}
+	</delete>
+	<select id="findAll" resultMap="t_fmp_task_map">
+		select `id`
+		,`task_name`
+		,`file_path`
+		,`task_start_date`
+		,`task_status`
+		,`created_time`
+		,`count`
+		,`updated_time`
+		,`status`
+		from t_fmp_task where `status`=1
+	</select>
+
+	<select id="find" resultMap="t_fmp_task_map" parameterType="Long">
+		select `id`
+		,`task_name`
+		,`file_path`
+		,`task_start_date`
+		,`task_status`
+		,`created_time`
+		,`count`
+		,`updated_time`
+		,`status`
+		from t_fmp_task where
+		`id` = #{id}
+		and `status`=1
+	</select>
+	<select id="findByPKList" resultMap="t_fmp_task_map"
+		parameterType="List">
+		select `id`
+		,`task_name`
+		,`file_path`
+		,`task_start_date`
+		,`task_status`
+		,`created_time`
+		,`count`
+		,`updated_time`
+		,`status`
+		from t_fmp_task where
+		`id` in
+		<foreach collection="list" item="key" open="(" separator=","
+			close=")">
+			#{key}
+		</foreach>
+		and `status`=1
+
+	</select>
+	<select id="findByBeanProp" parameterType="com.zhixin.entities.task.FMPTaskEntity"
+		resultMap="t_fmp_task_map">
+		select `id`
+		,`task_name`
+		,`file_path`
+		,`task_start_date`
+		,`task_status`
+		,`created_time`
+		,`count`
+		,`updated_time`
+		,`status`
+		from t_fmp_task where
+		`status`=1
+		<if test="id != null">
+			and `id` = #{id}
+		</if>
+		<if test="taskName != null">
+			and `task_name` like concat('%',#{taskName},'%')
+		</if>
+		<if test="filePath != null">
+			and `file_path` like concat('%',#{filePath},'%')
+		</if>
+		<if test="taskStatus != null">
+			and `task_status` = #{taskStatus}
+		</if>
+		<if test="count != null">
+			and `count` = #{count}
+		</if>
+	</select>
+	<select id="findForPager" parameterType="map" resultMap="t_fmp_task_map">
+		select `id`
+		,`task_name`
+		,`file_path`
+		,`task_start_date`
+		,`task_status`
+		,`created_time`
+		,`count`
+		,`updated_time`
+		,`status`
+		from t_fmp_task where
+		`status`=1
+		<if test="id != null">
+			and `id` = #{id}
+		</if>
+		<if test="taskName != null">
+			and `task_name` like concat('%',#{taskName},'%')
+		</if>
+		<if test="filePath != null">
+			and `file_path` like concat('%',#{filePath},'%')
+		</if>
+		<if test="taskStatus != null">
+			and `task_status` = #{taskStatus}
+		</if>
+		<if test="count != null">
+			and `count` = #{count}
+		</if>
+		limit #{startNum},#{pageSize}
+	</select>
+	<select id="findForPagerCount" parameterType="com.zhixin.entities.task.FMPTaskEntity"
+		resultType="Integer">
+		select count(1) as count from t_fmp_task where status=1
+		<if test="id != null">
+			and `id` = #{id}
+		</if>
+		<if test="taskName != null">
+			and `task_name` like concat('%',#{taskName},'%')
+		</if>
+		<if test="filePath != null">
+			and `file_path` like concat('%',#{filePath},'%')
+		</if>
+		<if test="taskStatus != null">
+			and `task_status` = #{taskStatus}
+		</if>
+		<if test="count != null">
+			and `count` = #{count}
+		</if>
+	</select>
+
+	<select id="dyFindForPager" parameterType="map" resultMap="t_fmp_task_map">
+		select `id`
+		,`task_name`
+		,`file_path`
+		,`task_start_date`
+		,`task_status`
+		,`created_time`
+		,`count`
+		,`updated_time`
+		,`status`
+		from t_fmp_task where
+		`status`=1
+
+		<if test="conditionList != null">
+			<foreach collection="conditionList" item="item" index="index">
+
+				<choose>
+					<when test="item.dbOp == 'in' ">
+						and `${item.colName}` IN
+						<foreach collection="item.value" item="key" open="("
+							separator="," close=")">
+							#{key}
+						</foreach>
+					</when>
+					<when test="item.dbOp == 'like' ">
+						and `${item.colName}` like #{item.value}
+					</when>
+					<otherwise>
+						and `${item.colName}` ${item.dbOp} #{item.value}
+					</otherwise>
+				</choose>
+			</foreach>
+		</if>
+		<if test="order != null">
+			order by
+			<foreach collection="order" item="item" index="index"
+				separator=",">
+				`${item}`
+			</foreach>
+		</if>
+		<if test="direction != null">
+			${direction}
+		</if>
+		limit #{startNum},#{pageSize}
+	</select>
+	<select id="dyFindForPagerCount" parameterType="map" resultType="Integer">
+		select count(1) as count from t_fmp_task where status=1
+		<if test="conditionList != null">
+			<foreach collection="conditionList" item="item" index="index">
+
+				<choose>
+					<when test="item.dbOp == 'in' ">
+						and `${item.colName}` IN
+						<foreach collection="item.value" item="key" open="("
+							separator="," close=")">
+							#{key}
+						</foreach>
+					</when>
+					<when test="item.dbOp == 'like' ">
+						and `${item.colName}` like #{item.value}
+					</when>
+					<otherwise>
+						and `${item.colName}` ${item.dbOp} #{item.value}
+					</otherwise>
+				</choose>
+			</foreach>
+		</if>
+	</select>
+	<select id="countWithGroupBy" parameterType="map" resultType="map">
+		select
+		count(1) as count
+		<if test="group_by != null">
+			<foreach collection="group_by" item="item" index="index"
+				open="," separator=",">
+				`${item}`
+			</foreach>
+		</if>
+		from t_fmp_task where status=1
+		<if test="conditionList != null">
+			<foreach collection="conditionList" item="item" index="index">
+				<choose>
+					<when test="item.dbOp == 'in' ">
+						and `${item.colName}` IN
+						<foreach collection="item.value" item="key" open="("
+							separator="," close=")">
+							#{key}
+						</foreach>
+					</when>
+					<when test="item.dbOp == 'like' ">
+						and `${item.colName}` like #{item.value}
+					</when>
+					<otherwise>
+						and `${item.colName}` ${item.dbOp} #{item.value}
+					</otherwise>
+				</choose>
+			</foreach>
+		</if>
+		<if test="group_by != null">
+			group by
+			<foreach collection="group_by" item="item" index="index"
+				separator=",">
+				`${item}`
+			</foreach>
+		</if>
+		<if test="order != null">
+			order by
+			<foreach collection="order" item="item" index="index"
+				separator=",">
+				`${item}`
+			</foreach>
+		</if>
+		<if test="direction != null">
+			${direction}
+		</if>
+	</select>
+
+</mapper>

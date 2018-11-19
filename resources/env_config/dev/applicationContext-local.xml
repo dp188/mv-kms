@@ -1,0 +1,30 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean id="PropertyPlaceholderConfigurer" 
+        class="com.zhixin.core.utils.PropertyConfigurer">
+        <property name="locations">  
+           <list>  
+              <!-- 这里支持多种寻址方式：classpath和file -->  
+              <value>classpath*:/system-config.properties</value>  
+              <!-- 推荐使用file的方式引入，这样可以将配置和代码分离 -->  
+              <!-- 
+               <value>file:/opt/demo/config/demo-mq.properties</value>  
+               <value>file:/opt/demo/config/demo-remote.properties</value>  
+               -->
+            </list>  
+        </property>  
+    </bean> 
+	 
+</beans>

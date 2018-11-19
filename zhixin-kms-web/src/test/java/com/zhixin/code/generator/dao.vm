@@ -1,0 +1,10 @@
+package com.zhixin.dao.${moduleName};
+
+import com.zhixin.dao.base.IBaseDao;
+import com.zhixin.entities.${moduleName}.${classname}Entity;
+
+
+public interface I${classname}Dao extends IBaseDao<${classname}Entity,Long> {    
+     
+ 
+}

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+	<!-- 引入本地配置 -->
+	<import resource="classpath:applicationContext-local.xml" />
+
+	<!-- SHA1加密功能 -->
+	<bean id="shaPasswordEncoder" class="org.springframework.security.authentication.encoding.ShaPasswordEncoder">
+		<!-- 用于SHA256加密 <constructor-arg value="256"/> -->
+	</bean>
+	
+	<!-- spring 自动扫描的controller 包 -->
+	<context:component-scan base-package="com.zhixin.mall">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+	</context:component-scan> 
+	<context:component-scan base-package="com.zhixin.kms">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+	</context:component-scan> 
+	<!-- 导入相关配置 -->
+	
+	<!-- 初始化配置信息 -->
+    <bean id="SpringContextUtil" class="com.zhixin.core.utils.SpringContextUtil" scope="singleton" /> 
+    <!-- 初始化配置信息 -->
+	<import resource="classpath*:/spring/applicationContext-persistent.xml" />
+	<import resource="classpath*:/spring/applicationContext.xml" />
+	<import resource="classpath*:/spring/security_context.xml"/> 
+</beans>

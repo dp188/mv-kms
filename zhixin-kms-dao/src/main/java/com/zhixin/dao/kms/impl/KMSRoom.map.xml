@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhixin.dao.kms.impl.KMSRoomDaoImpl">
+	<resultMap id="t_kms_room_map" type="com.zhixin.entities.kms.KMSRoomEntity">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="key" column="key" />
+		<result property="status" column="status" />
+		<result property="createdTime" column="created_time" />
+		<result property="updatedTime" column="updated_time" />
+		<result property="videoStartTime" column="video_start_time" />
+		<result property="isDuplexing" column="is_duplexing" />
+		<result property="remark" column="remark" />
+		<result property="livePath" column="live_path" />
+	</resultMap>
+	<insert id="create" parameterType="com.zhixin.entities.kms.KMSRoomEntity">
+		insert into t_kms_room (
+		id
+		,`name`
+		,`key`
+		,`status`
+		,`video_start_time`
+		,`is_duplexing`
+		,`remark`
+		,`live_path`
+		) values (
+		#{id}
+		, #{name}
+		, #{key}
+		, #{status}
+		, #{videoStartTime}
+		, #{isDuplexing}
+		, #{remark}
+		, #{livePath}
+		)
+	</insert>
+	<update id="update" parameterType="com.zhixin.entities.kms.KMSRoomEntity">
+		update t_kms_room
+		<set>
+			`name` =#{name},
+			`key` =#{key},
+			`video_start_time` =#{videoStartTime},
+			`is_duplexing` =#{isDuplexing},
+			`remark` =#{remark},
+			`live_path` =#{livePath},
+		</set>
+		where
+		`id` = #{id}
+
+	</update>
+	<update id="updateStatus" parameterType="map">
+		update t_kms_room
+		set
+		status= #{status}
+		where
+		`id` = #{id}
+	</update>
+	<delete id="remove" parameterType="Long">
+		update t_kms_room set
+		status= 0
+		where
+		`id` = #{id}
+	</delete>
+	<select id="findAll" resultMap="t_kms_room_map">
+	<![CDATA[ 
+		select `id`
+		,`name`
+		,`key`
+		,`status`
+		,`created_time`
+		,`updated_time`
+		,`video_start_time`
+		,`is_duplexing`
+		,`remark`
+		,`live_path`
+		from t_kms_room where `status` <> 0
+	]]>
+	</select>
+
+	<select id="find" resultMap="t_kms_room_map" parameterType="Long">
+	<![CDATA[ 
+		select `id`
+		,`name`
+		,`key`
+		,`status`
+		,`created_time`
+		,`updated_time`
+		,`video_start_time`
+		,`is_duplexing`
+		,`remark`
+		,`live_path`
+		from t_kms_room where
+		`id` = #{id}
+		and `status` <> 0
+	]]>
+	</select>
+	<select id="findByPKList" resultMap="t_kms_room_map"
+		parameterType="List">
+		select `id`
+		,`name`
+		,`key`
+		,`status`
+		,`created_time`
+		,`updated_time`
+		,`video_start_time`
+		,`is_duplexing`
+		,`remark`
+		,`live_path`
+		from t_kms_room where
+		`id` in
+		<foreach collection="list" item="key" open="(" separator=","
+			close=")">
+			#{key}
+		</foreach>
+		<![CDATA[ 
+		and `status` <> 0
+		]]>   
+
+	</select>
+	<select id="findByBeanProp" parameterType="com.zhixin.entities.kms.KMSRoomEntity"
+		resultMap="t_kms_room_map">
+		<![CDATA[ 
+		select `id`
+		,`name`
+		,`key`
+		,`status`
+		,`created_time`
+		,`updated_time`
+		,`video_start_time`
+		,`is_duplexing`
+		,`remark`
+		,`live_path`
+		from t_kms_room where `status` <> 0
+		]]>   
+		<if test="id != null">
+			and `id` = #{id}
+		</if>
+		<if test="name != null">
+			and `name` like concat('%',#{name},'%')
+		</if>
+		<if test="key != null">
+			and `key` like concat('%',#{key},'%')
+		</if>
+		<if test="isDuplexing != null">
+			and `is_duplexing` like concat('%',#{isDuplexing},'%')
+		</if>
+		<if test="remark != null">
+			and `remark` like concat('%',#{remark},'%')
+		</if>
+		<if test="livePath != null">
+			and `live_path` like concat('%',#{livePath},'%')
+		</if>
+	</select>
+	<select id="findForPager" parameterType="map" resultMap="t_kms_room_map">
+	<![CDATA[ 
+		select `id`
+		,`name`
+		,`key`
+		,`status`
+		,`created_time`
+		,`updated_time`
+		,`video_start_time`
+		,`is_duplexing`
+		,`remark`
+		,`live_path`
+		from t_kms_room where `status` <> 0
+		 ]]>     
+		<if test="id != null">
+			and `id` = #{id}
+		</if>
+		<if test="name != null">
+			and `name` like concat('%',#{name},'%')
+		</if>
+		<if test="key != null">
+			and `key` like concat('%',#{key},'%')
+		</if>
+		<if test="isDuplexing != null">
+			and `is_duplexing` like concat('%',#{isDuplexing},'%')
+		</if>
+		<if test="remark != null">
+			and `remark` like concat('%',#{remark},'%')
+		</if>
+		<if test="livePath != null">
+			and `live_path` like concat('%',#{livePath},'%')
+		</if>
+		limit #{startNum},#{pageSize}
+	</select>
+	<select id="findForPagerCount" parameterType="com.zhixin.entities.kms.KMSRoomEntity"
+		resultType="Integer">
+		select count(1) as count from t_kms_room where status=1
+		<if test="id != null">
+			and `id` = #{id}
+		</if>
+		<if test="name != null">
+			and `name` like concat('%',#{name},'%')
+		</if>
+		<if test="key != null">
+			and `key` like concat('%',#{key},'%')
+		</if>
+		<if test="isDuplexing != null">
+			and `is_duplexing` like concat('%',#{isDuplexing},'%')
+		</if>
+		<if test="remark != null">
+			and `remark` like concat('%',#{remark},'%')
+		</if>
+		<if test="livePath != null">
+			and `live_path` like concat('%',#{livePath},'%')
+		</if>
+	</select>
+
+	<select id="dyFindForPager" parameterType="map" resultMap="t_kms_room_map">
+		<![CDATA[
+		select `id`
+		,`name`
+		,`key`
+		,`status`
+		,`created_time`
+		,`updated_time`
+		,`video_start_time`
+		,`is_duplexing`
+		,`remark`
+		,`live_path`
+		from t_kms_room where `status` <> 0
+		 ]]>     
+		<if test="conditionList != null">
+			<foreach collection="conditionList" item="item" index="index">
+
+				<choose>
+					<when test="item.dbOp == 'in' ">
+						and `${item.colName}` IN
+						<foreach collection="item.value" item="key" open="("
+							separator="," close=")">
+							#{key}
+						</foreach>
+					</when>
+					<when test="item.dbOp == 'like' ">
+						and `${item.colName}` like #{item.value}
+					</when>
+					<otherwise>
+						and `${item.colName}` ${item.dbOp} #{item.value}
+					</otherwise>
+				</choose>
+			</foreach>
+		</if>
+		<if test="order != null">
+			order by
+			<foreach collection="order" item="item" index="index"
+				separator=",">
+				`${item}`
+			</foreach>
+		</if>
+		<if test="direction != null">
+			${direction}
+		</if>
+		limit #{startNum},#{pageSize}
+	</select>
+	<select id="dyFindForPagerCount" parameterType="map" resultType="Integer">
+		select count(1) as count from t_kms_room where status=1
+		<if test="conditionList != null">
+			<foreach collection="conditionList" item="item" index="index">
+
+				<choose>
+					<when test="item.dbOp == 'in' ">
+						and `${item.colName}` IN
+						<foreach collection="item.value" item="key" open="("
+							separator="," close=")">
+							#{key}
+						</foreach>
+					</when>
+					<when test="item.dbOp == 'like' ">
+						and `${item.colName}` like #{item.value}
+					</when>
+					<otherwise>
+						and `${item.colName}` ${item.dbOp} #{item.value}
+					</otherwise>
+				</choose>
+			</foreach>
+		</if>
+	</select>
+	<select id="countWithGroupBy" parameterType="map" resultType="map">
+		select
+		count(1) as count
+		<if test="group_by != null">
+			<foreach collection="group_by" item="item" index="index"
+				open="," separator=",">
+				`${item}`
+			</foreach>
+		</if>
+		from t_kms_room where status=1
+		<if test="conditionList != null">
+			<foreach collection="conditionList" item="item" index="index">
+				<choose>
+					<when test="item.dbOp == 'in' ">
+						and `${item.colName}` IN
+						<foreach collection="item.value" item="key" open="("
+							separator="," close=")">
+							#{key}
+						</foreach>
+					</when>
+					<when test="item.dbOp == 'like' ">
+						and `${item.colName}` like #{item.value}
+					</when>
+					<otherwise>
+						and `${item.colName}` ${item.dbOp} #{item.value}
+					</otherwise>
+				</choose>
+			</foreach>
+		</if>
+		<if test="group_by != null">
+			group by
+			<foreach collection="group_by" item="item" index="index"
+				separator=",">
+				`${item}`
+			</foreach>
+		</if>
+		<if test="order != null">
+			order by
+			<foreach collection="order" item="item" index="index"
+				separator=",">
+				`${item}`
+			</foreach>
+		</if>
+		<if test="direction != null">
+			${direction}
+		</if>
+	</select>
+
+</mapper>

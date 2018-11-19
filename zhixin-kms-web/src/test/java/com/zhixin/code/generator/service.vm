@@ -1,0 +1,10 @@
+package com.zhixin.service.${moduleName};
+
+import com.zhixin.dto.${moduleName}.${classname}DTO;
+import com.zhixin.entities.${moduleName}.${classname}Entity;
+import com.zhixin.service.base.IBaseService;
+ 
+ 
+public interface I${classname}Service extends IBaseService<${classname}DTO,${classname}Entity, Long>{
+	 
+}
